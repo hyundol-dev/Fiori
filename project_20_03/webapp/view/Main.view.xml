@@ -1,0 +1,27 @@
+<mvc:View controllerName="project2003.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:l="sap.ui.layout">
+
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <l:VerticalLayout width = "300pt">
+                <!-- Input -->
+                <Input id="idInput" />
+
+                <!-- 버튼 -->
+                <Button width = "100pt" 
+                        text = "작성 완료" press = "onClick" 
+                        type = "Emphasized"/>
+
+                <!-- 초기화 버튼 -->
+                <Button width = "80pt"
+                        text = "초기화" press = "onInitClick"
+                        type = "Back"/>
+
+                <!-- Text -->   
+                <Text id="idOutput" />
+
+            </l:VerticalLayout>
+        </content>
+    </Page>
+</mvc:View>

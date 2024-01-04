@@ -1,0 +1,20 @@
+<mvc:View controllerName="project2006.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:c="sap.ui.core" >
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <Text text = "This is Main.view.xml" />
+
+            <!--Nested View (중첩 뷰) 호출-->
+            <mvc:XMLView viewName="project2006.view.HelloPanel"/>
+
+            <!--Fragment View (조각 뷰) 호출-->
+            <c:Fragment fragmentName="project2006.view.fragment.HelloFrag"/>
+        
+            <!--Fragment - Dialog(팝업) 호출-->
+            <c:Fragment fragmentName="project2006.view.fragment.Dialog"/>
+
+        
+        </content>
+    </Page>
+</mvc:View>
