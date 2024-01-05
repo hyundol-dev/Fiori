@@ -13,32 +13,27 @@ sap.ui.define([
             onInit: function () {
                 //new sap.m.Button
                 new Button
-                //초기화 함수
-                //초기값 설정, 화면에서 사용할 모델 생성
-                //아래 함수들이 사용할 공통 변수 등을 세팅
-
-                // this.byId("idInput1").setValue("10"); // 화면 뜨자마자 초기 세팅
-                // this.byId("idInput2").setValue("20"); // 화면 뜨자마자 초기 세팅
-                // this.getView().byId("idInput");
-                // -> idInput 객체가 없다고 오류가 날 수 있음
-                // -> 왜냐면, 화면이 아직 그려지기 전에 Init 함수가 실행해서
-                //    타이밍이 맞지 않을 수 있기 때문
-                // -> onAfterRendering 등 화면 그려진 후에 로직을 실행할 수 있도록 설정
-
-                // this.getOwnerComponent().getModel()
-                // -> Component 단으로 올라가기 위해서
-                //    getOwnerComponent() 를 사용
 
                 var oData = { 
                     items : [
-                        { key : "plus", text : "+" ,additionalText : "Plus"},
-                        { key : "minus", text : "-" ,additionalText : "Minus"},
-                        { key : "multiple", text : "*" ,additionalText : "Multiple"},
-                        { key : "divide", text : "/" ,additionalText : "Divide"}
+                        { key : "plus", text : "+", additionalText : "Plus"},
+                        { key : "minus", text : "-", additionalText : "Minus"},
+                        { key : "multiple", text : "*", additionalText : "Multiple"},
+                        { key : "divide", text : "/", additionalText : "Divide"}
                     ]
                 };
                 var oModel = new JSONModel(oData);
-                this.getView().setModel(oModel,"test"); 
+                this.getView().setModel(oModel); 
+
+                var oData2 = {
+                    history : [
+                        {num1: 1, oper: "+", num2: 1, result: 2},
+ 
+                    ]
+                };
+                var oModel2 = new JSONModel(oData2);
+                this.getView().setModel(oModel2, 'local');
+                // this.getView().setModel(2222); 해버리면 위에꺼 무효화 됨
             },
 
             
@@ -46,6 +41,25 @@ sap.ui.define([
                 //View에 있는 Input 객체를 가져온다
                 var oInput1 = this.byId("idInput1").getValue();
                 var oInput2 = this.byId("idInput2").getValue();
+
+                //바인딩 코드
+                // Model 가져오기
+                var oHistoryModel = this.getView().getModel('local')
+
+                // oModel.getData().history or
+                oHistoryModel.getProperty('/history');
+                // oModel.getData(); // 전체 데이터 가져오기
+                // oModel.getProperty('/'); // 경로 지정하여 가져오기
+                // oModel.setData(); // 전체 데이터 세팅
+                // oModel.setData( { name : 'okok' }) // 기존 데이터 다 날라가고 덮어쓰기
+                // ∴ oModel.setData( { name : 'okok' }, true) // 덮어쓰기 x
+                // oModel.setData( 세팅할데이터, 합치기 여부)
+                // oModel.setProperty('/'); // 특정 경로 지정하여 세팅하기
+                // oModel.setProperty(대상경로, 바꿀 값); //
+
+                
+                
+                //숫자 확인&변환 작업
                 if(oInput1 == ""){ 
                     oInput1 = null; 
                 }
@@ -61,7 +75,7 @@ sap.ui.define([
                 }
                 
                 var cal = this.byId("idSelect").getSelectedKey();
-                var sOperator = this.byId("idSelect").getSelectedItem().getText();
+               // var sOperator = this.byId("idSelect").getSelectedItem().getText();
                 var result = 0;
 
                 switch(cal){

@@ -1,6 +1,6 @@
 <mvc:View controllerName="project1001.controller.View1"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns:core="sap.ui.core" 
+    xmlns:c="sap.ui.core" 
     xmlns="sap.ui.table"
     xmlns:u="sap.ui.unified"
     xmlns:m="sap.m" 
@@ -11,24 +11,33 @@
             <l:VerticalLayout>
                 <l:HorizontalLayout >
                     <m:Text text="Input 1" width="65px" textAlign="Center"/>
-                    <m:Input id = "idInput1" width="300px" type="Number" placeholder="값을 입력해주세요" textAlign="Center"/>
+                    <m:Input id = "idInput1" width="300px" type="Number"/>
                 </l:HorizontalLayout>
 
                 <!--여기서 부터-->
                 <l:HorizontalLayout>
                     <m:Text text="수식 선택" width="65px"/>
-                    <m:Select id = "idSelect" width="300px" showSecondaryValues="true" items="{test>/items}" textAlign="Center">
-                        <core:ListItem 
-                            key="{test>key}"
-                            text="{test>text}"
-                            additionalText="{test>additionalText}"/>
+                    <m:Select id = "idSelect" width="300px" 
+                              showSecondaryValues="true" items="{/items}">
+                        <c:ListItem 
+                            key="{key}"
+                            text="{text}"
+                            additionalText="{additionalText}"/>
                     </m:Select>
                 </l:HorizontalLayout>
                 <!--여기까지 Aggregation Binding-->
+
+                        <!--바인딩 이전에 계산기 코드-->
+                    <!-- <items> 
+                        <c:ListItem text = "+" key = "plus" additionalText = "Plus" />
+                        <c:ListItem text = "-" key = "minus" additionalText = "Minus"/>
+                        <c:ListItem text = "*" key = "multiple" additionalText = "Multiple"/>
+                        <c:ListItem text = "/" key = "divide" additionalText = "Divide"/>
+                    </items> -->
                 
                 <l:HorizontalLayout >
                     <m:Text text="Input 2" width="65px" textAlign="Center"/>
-                    <m:Input id = "idInput2" width="300px" type="Number" placeholder="값을 입력해주세요" textAlign="Center"/>
+                    <m:Input id = "idInput2" width="300px" type="Number"/>
                 </l:HorizontalLayout>
                 <l:HorizontalLayout>
                     <m:Text text="" width="65px"/>
@@ -38,45 +47,41 @@
                 
             </l:VerticalLayout>
             <!-- sap.ui.table.Table -->
-            <!-- <Table
-				rows="{/ProductCollection}"
+            <Table
+				rows="{local>/history}"
 				selectionMode="MultiToggle"
 				paste="onPaste"
 				ariaLabelledBy="title">
+            <!--local이라는 모델 이름의 history라는 배열-->
+
 				<columns>
-					<Column width="11rem">
-						<m:Label text="Product Name" />
+					<Column>
+						<m:Label text="Number 1" />
 						<template>
-							<m:Text text="{Name}" wrapping="false" />
+							<m:Text text="{local>num1}" wrapping="false" />
+						</template>
+					</Column>
+                    <Column>
+						<m:Label text="Operator" />
+						<template>
+							<m:Text text="{local>oper}" wrapping="false" />
+						</template>
+					</Column>
+                    <Column>
+						<m:Label text="Number 2" />
+						<template>
+							<m:Text text="{local>num2}" wrapping="false" />
+						</template>
+					</Column>
+                    <Column>
+						<m:Label text="Result" />
+						<template>
+							<m:Text text="{local>result}" wrapping="false" />
 						</template>
 					</Column>
 				</columns>
-			</Table> -->
+			</Table>
 
-            <!-- sap.m.Table -->
-            <!-- <m:Table id="idProductsTable">
-                <m:headerToolbar>
-                    <m:OverflowToolbar>
-                        <m:content>
-                            <m:Title text="Products" level="H2"/>
-                            <m:ToolbarSpacer />
-                        </m:content>
-                    </m:OverflowToolbar>
-                </m:headerToolbar>
-             
-                <m:columns>
-                    <m:Column>
-                        <m:Text text="Price" />
-                    </m:Column>
-                </m:columns>
-                <m:items>
-                    <m:ColumnListItem vAlign="Middle">
-                        <m:cells>
-                            <m:Text text="{SupplierName}" />
-                        </m:cells>
-                    </m:ColumnListItem>
-                </m:items>
-            </m:Table> -->
             
         </m:content>
             

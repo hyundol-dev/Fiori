@@ -5,6 +5,8 @@
         <VBox>
             <Text text = "{test>/name/firstName} {test>/name/lastName}" />
             <Text text = "{/datas/2/tel}" /> 
+			<!--getData, setData 실습 & Debugger 실습용-->
+			<Button text = "이름 변경" press = "onClick"/>
         </VBox>
 
         <t:Table
