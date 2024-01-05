@@ -1,0 +1,80 @@
+<mvc:View controllerName="project2001.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l = "sap.ui.layout"
+    xmlns:c="sap.ui.core"
+    xmlns:t="sap.ui.table">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <l:VerticalLayout width="300pt">
+                <!--첫번째 숫자 입력-->
+                <Input id = "idInput1" type = "Number" /> <!--숫자만 입력할 수 있게-->
+                <Select id = "idOperator" width = "100%" showSecondaryValues="true">
+                    <items> 
+                        <!--사칙연산자 구현 with key-->
+                        <c:ListItem text = "+" key = "plus" additionalText = "Plus" /> <!--Item에는 additionalText 없기 때문-->
+                        <c:ListItem text = "-" key = "minus" additionalText = "Minus"/>
+                        <c:ListItem text = "*" key = "multiple" additionalText = "Multiple"/>
+                        <c:ListItem text = "/" key = "divide" additionalText = "Divide"/>
+                    </items>
+                </Select>
+                <!--2번째 숫자 입력-->
+                <Input id = "idInput2" type = "Number" /> <!--숫자만 입력할 수 있게-->
+                <!--계산 실행 버튼-->
+                <Button width = "100%" text = "계산 실행"  press = "onClick" /> <!--이벤트 함수일 경우 onXxxx식-->
+            </l:VerticalLayout>
+
+            <!--sap.ui.table.Table-->
+            <t:Table
+				rows="{/ProductCollection}"
+				selectionMode="MultiToggle"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:columns>
+					<t:Column width="11rem">
+						<Label text="Product Name" />
+						<t:template>
+							<Text text="{Name}" wrapping="false" />
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+
+            <!--sap.m.Table-->
+            <Table id="idProductsTable">
+	        	<headerToolbar>
+	        		<OverflowToolbar>
+	        			<content>
+	        				<Title text="Products" level="H2"/>
+	        				<ToolbarSpacer />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column
+                        hAlign="End">
+                        <Text text="Price" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text
+                                text="{SupplierName}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+                 
+        </content>
+            <footer>
+                <!--Bar 타입을 가진 클래스 적용 가능-->
+                <Toolbar>
+                    <ToolbarSpacer />
+                    <!-- 초기화 실행 버튼 -->
+                    <Button text = "초기화" width = "80pt"
+                    type = "Back"/> <!--press 시 onClick 함수가 실행되도록, onClick 함수는 controller로!-->
+                </Toolbar>
+            </footer>
+    </Page>
+</mvc:View>
