@@ -1,7 +1,42 @@
 <mvc:View controllerName="project2007.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m" xmlns:t="sap.ui.table">
     <Page id="page" title="{i18n>title}">
-        <content />
+        <VBox>
+            <Text text = "{test>/name/firstName} {test>/name/lastName}" />
+            <Text text = "{/datas/2/tel}" /> 
+        </VBox>
+
+        <t:Table
+			rows="{test>/datas}"
+			selectionMode="MultiToggle"
+			paste="onPaste"
+			ariaLabelledBy="title">
+			<t:extension>
+				<OverflowToolbar style="Clear">
+					<Title id="title" text="Products"/>
+				</OverflowToolbar>
+			</t:extension>
+			<t:columns>
+				<t:Column width="11rem">
+					<Label text="Name" /> <!--Column 명/제목-->
+					<t:template> <!--Data 출력 방식-->
+						<Text text="{test>name}" wrapping="false" />
+					</t:template>
+				</t:Column>
+                <t:Column width="11rem">
+					<Label text="Age" /> <!--Column 명/제목-->
+					<t:template> <!--Data 출력 방식-->
+						<Text text="{test>age}" wrapping="false" />
+					</t:template>
+				</t:Column>
+                <t:Column width="11rem">
+					<Label text="Tel." /> <!--Column 명/제목-->
+					<t:template> <!--Data 출력 방식-->
+						<Text text="{test>tel}" wrapping="false" />
+					</t:template>
+				</t:Column>
+			</t:columns>
+		</t:Table>
     </Page>
 </mvc:View>

@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "project2007",
+    "id": "project1001",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.12.1",
-      "toolsId": "2db53705-c75d-4c53-ba5a-a4a4d662e56f"
+      "toolsId": "e49a7b0d-e35c-498c-97bd-ece4c9e11c9d"
     }
   },
   "sap.ui": {
@@ -35,7 +35,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "dependencies": {
-      "minUI5Version": "1.120.4",
+      "minUI5Version": "1.120.3",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -55,7 +55,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project2007.i18n.i18n"
+          "bundleName": "project1001.i18n.i18n"
         }
       }
     },
@@ -71,32 +71,32 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "project2007.view",
+        "viewPath": "project1001.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "RouteMain",
+          "name": "RouteView1",
           "pattern": ":?query:",
           "target": [
-            "TargetMain"
+            "TargetView1"
           ]
         }
       ],
       "targets": {
-        "TargetMain": {
+        "TargetView1": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "Main",
-          "viewName": "Main"
+          "viewId": "View1",
+          "viewName": "View1"
         }
       }
     },
     "rootView": {
-      "viewName": "project2007.view.App",
+      "viewName": "project1001.view.App",
       "type": "XML",
       "async": true,
       "id": "App"
