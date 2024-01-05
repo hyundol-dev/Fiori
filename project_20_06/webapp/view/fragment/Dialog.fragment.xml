@@ -1,17 +1,24 @@
 <c:FragmentDefinition xmlns:c = "sap.ui.core" xmlns = "sap.m">
     <Dialog id = "idDialog"
-            contentWidth="40%" title="제목"
+            contentWidth="40%" title="Dialog/Popup"
             contentHeight="50%"
             draggable="true" 
-            resizable="true">
+            resizable="true"
+            >
             <!--draggable: 사용자가 다이얼로그를 드래그할 수 있는지 여부. 
                            true=드래그 가능
                 resizable: 사용자가 다이얼로그의 크기를 조절할 수 있는지 여부. 
                            true=크기 조절 가능-->
+                    
         <content>
+            <Text text = "I'm Dialog"/>
+
         </content>
-    
+
+        <!--Dialog(팝업) 닫기 버튼-->
         <endButton>
+            <Button text = "Close" icon = "sap-icon://decline" 
+                    press = ".onCloseDialog"/>
         </endButton>
     </Dialog>
 
