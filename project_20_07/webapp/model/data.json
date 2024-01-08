@@ -1,6 +1,8 @@
 { 
     "name" : "Hong Gil Dong",
+    "inpValue" : "World" ,
     "age" : 20,
     "title" : "Gildong`s page",
-    "list" : [ { "name" : "Lee Hyun Seok" } ]
+    "list" : [ { "name" : "Lee Hyun Seok"} ]
+    
 }

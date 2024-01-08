@@ -9,6 +9,9 @@
     <m:Page id="page" title="{i18n>title}">
         <m:content>
             <l:VerticalLayout>
+            <!--Context Binding 240108 16:00-->
+            <m:Title id="idTitle" text="{subTitle}"/>
+            <!--binding="{/title}", 이 부분을 Controller에서 구현 가능-->
                 <l:HorizontalLayout >
                     <m:Text text="Input 1" width="65px" textAlign="Center"/>
                     <m:Input id = "idInput1" width="300px" type="Number"/>
@@ -41,7 +44,7 @@
                 </l:HorizontalLayout>
                 <l:HorizontalLayout>
                     <m:Text text="" width="65px"/>
-                    <m:Button width = "300px" text ="실행" press="onClick"/>
+                    <m:Button width = "300px" text ="실행" press="onCalc"/>
                 </l:HorizontalLayout>
                 
                 
@@ -53,30 +56,50 @@
 				paste="onPaste"
 				ariaLabelledBy="title">
             <!--local이라는 모델 이름의 history라는 배열-->
-
 				<columns>
-					<Column>
-						<m:Label text="Number 1" />
+					<Column hAlign="End">
+						<m:Label width="100%" textAlign="Center" text="Number 1" />
 						<template>
 							<m:Text text="{local>num1}" wrapping="false" />
 						</template>
 					</Column>
-                    <Column>
+                    <Column hAlign="Center">
 						<m:Label text="Operator" />
 						<template>
 							<m:Text text="{local>oper}" wrapping="false" />
 						</template>
 					</Column>
-                    <Column>
+                    <Column hAlign="End">
 						<m:Label text="Number 2" />
 						<template>
 							<m:Text text="{local>num2}" wrapping="false" />
 						</template>
 					</Column>
-                    <Column>
+                    <Column hAlign="Right">
 						<m:Label text="Result" />
 						<template>
 							<m:Text text="{local>result}" wrapping="false" />
+						</template>
+					</Column>
+                    <!--Expression Binding-->
+                    <Column hAlign="Center">
+						<m:Label text="Status" />
+						<template>
+							<c:Icon
+			                    src="sap-icon://circle-task-2"
+			                    class="size1"
+			                    color="{
+                                    path : 'local>result',
+                                    formatter : '.fnColorFormat'
+                                }" 
+                                visible="{= ${local>result} > 100}" >
+                                <!--color="{= ${local>result} > 100 ? '#bffcc6' : '#ffabab'}"-->
+                                <!--결과값이 100 초과면 '#bffcc6' 색상, 아니면 '#ffabab' 색상
+                                & 100 초과면 색깔 보이게, 아니면 invisible-->
+                                <c:layoutData>
+			                    	<m:FlexItemData growFactor="1" />
+			                    </c:layoutData>
+		                    </c:Icon>
 						</template>
 					</Column>
 				</columns>
