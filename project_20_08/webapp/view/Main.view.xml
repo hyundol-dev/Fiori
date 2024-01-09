@@ -4,7 +4,7 @@
     xmlns:t="sap.ui.table">
     <Page id="page" title="{i18n>title}">
         <content> 
-            <t:Table
+            <t:Table id = "idTable"
 				rows="{/list}"
 				selectionMode="MultiToggle"
 				rowActionCount="1"

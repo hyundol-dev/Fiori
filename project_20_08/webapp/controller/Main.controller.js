@@ -44,12 +44,34 @@ sap.ui.define([
                 this.getView().getModel().setProperty("/list", aList); //삭제 된 새로운 배열을 aList로 재할당(재설정)
             },
             onDelete: function() {
-                var oModel = this.getView().getModel();
-                var aList = oModel.getProperty("/list");
-                var table = document.getElementById('idTable');
-                var aSelectedRow = table.getSelectedIndices();
- 
-                // for (var i = 0; i) {}
-            }
+                    // oModel 접시에 현재 컨트롤러 속한 뷰 에서 모델 담아
+                    var oModel = this.getView().getModel();
+                    // 접시에 담은 list를 aList에 할당해
+                    var aList = oModel.getProperty("/list");
+                    // idTable이라는 테이블 객체에서 현재 선택된 행들의 인덱스 가져와
+                    var aSelectedRow = this.byId("idTable").getSelectedIndices();
+                    //높은 숫자/행 부터 하나씩 지워(by splice) / 위에서부터 지우면 row no.가 바뀌기 때문
+                    for (var i = aSelectedRow.length-1; i>=0; i--) {
+                        aList.splice(aSelectedRow[i], 1);
+                    }
+                    //삭제된 데이터가 반영된 배열을 모델의 list에 할당해
+                    oModel.setProperty("/list", aList);
+
+
+                    /*
+                    var oTable = this.byId("idTable"),
+                        aList = this.getView().getModel().getProperty("/list"),
+                        aIndices = oTable.getSelectedIndices();
+
+                        // [1,3,5] => len = 2->0까지
+                    var len = aIndices.length - 1;'
+                    for (var i = len; i >= 0, i--) {
+                        aList.splice(aIndices[i], 1);
+                    }
+
+                    this.getView().getModel().setProperty("/list", aList);
+                
+                    */
+                }
         });
     });
