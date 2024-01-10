@@ -16,7 +16,7 @@
                 <TimePicker />
                 <RadioButton />
                 <CheckBox />
-                </VBox>
+            </VBox>
         </content>
     </Page>
 </mvc:View>

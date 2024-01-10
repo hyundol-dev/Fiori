@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "project2006",
+    "id": "sap.btp.ux400solving",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,7 +13,18 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.12.1",
-      "toolsId": "60391f1e-2691-41ec-80de-b744cbe3f3f0"
+      "toolsId": "37b09675-3264-491d-b116-81f9ee64a943"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/v2/northwind/northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
     }
   },
   "sap.ui": {
@@ -35,7 +46,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "dependencies": {
-      "minUI5Version": "1.120.3",
+      "minUI5Version": "1.120.4",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -55,8 +66,13 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project2006.i18n.i18n"
+          "bundleName": "sap.btp.ux400solving.i18n.i18n"
         }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
       }
     },
     "resources": {
@@ -71,12 +87,11 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "project2006.view",
+        "viewPath": "sap.btp.ux400solving.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false,
         "fullWidth" : true
-        
       },
       "routes": [
         {
@@ -98,7 +113,7 @@
       }
     },
     "rootView": {
-      "viewName": "project2006.view.App",
+      "viewName": "sap.btp.ux400solving.view.App",
       "type": "XML",
       "async": true,
       "id": "App"

@@ -1,0 +1,68 @@
+<c:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:l="sap.ui.layout"
+    xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:c="sap.ui.core">
+    <Dialog id = "idCustomerDialog"
+            contentWidth="40%" 
+            title="Customer ID"
+            contentHeight="50%"
+            draggable="true"
+            resizable="true">
+        <content>
+            <Table id="idFragment"
+                sticky="HeaderToolbar,ColumnHeaders"
+                inset="false"
+                items="{/Customers}"
+                selectionChange="onSelectionChange"
+                class="sapFDynamicPageAlignContent"
+                width="auto">                     
+                <!-- <headerToolbar>
+                    <Toolbar>
+                        <Title text="Products" level="H2"/>
+                    </Toolbar>
+                </headerToolbar> -->
+                <columns>
+                    <Column
+                            width="8em">
+                        <Text text="Customer ID" />
+                    </Column>
+                    <Column
+                            width="12em">
+                        <Text text="Company Name" />
+                    </Column>
+                    <Column
+                            width="12em">
+                        <Text text="Contact Name" />
+                    </Column>
+                    <Column
+                            width="12em">
+                        <Text text="Contact Title" />
+                    </Column>
+                    <Column
+                            width="12em">
+                        <Text text="Address" />
+                    </Column>
+                </columns>
+                    <items> <!--m.Table에서는 columns 개수와 items의 개수가 동일해야 함-->
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{CustomerID}" />
+                                <Text text="{CompanyName}" />
+                                <Text text="{ContactName}" />
+                                <Text text="{ContactTitle}" />
+                                <Text text="{Address}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+            </Table>
+        </content>
+        <endButton>
+            <Button text = "Close" icon = "sap-icon://decline" 
+                    press = ".onClose"/>
+        </endButton>
+        
+    </Dialog>
+
+</c:FragmentDefinition>
