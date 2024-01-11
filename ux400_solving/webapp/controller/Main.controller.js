@@ -39,7 +39,10 @@ sap.ui.define([
                 this.getView().byId("idProductsDialog").open();
             },
             onCloseDialog: function(oEvent) {
+                // oEvent.getSource().close(); : Button을 불러옴
                 oEvent.getSource().getParent().close();
+                // getParent()통해 Button 상위인 Dialog를 불러옴
+                // => Dialog를 닫음!
             },
 
             // transformDiscontinued 함수 구현
@@ -55,6 +58,12 @@ sap.ui.define([
             // ∴ if(sValue)로 T,F가 이미 분류됨
             // ∴ True라면 Yes, False라면 No
             },
+
+            // 문제 9: onValueChange 함수 구현
+            // onValueChange: function() {
+            //     var oInput = this.getValue().byId("idInput").
+            //     oInput.setValueState()
+            // }
 
 
         });

@@ -85,7 +85,6 @@
                         </t:template>
                    </t:Column>
                 </t:columns>
-
             </t:Table>
         </content>
         <endButton>
