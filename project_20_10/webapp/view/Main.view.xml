@@ -20,7 +20,7 @@
                     'plotArea' : {
                         'drawingEffect' : 'glossy',
                         'dataLabel' : { 'visible' : true, 'type' : 'value' },
-                        'colorPalette' : ['#0019F4', '#008000', '#FEFD48']
+                        'colorPalette' : ['#E6A9EC', '#8497D7']
                     }
                 }"
                 > <!--title = 차트 제목, legendGroup = 범례-->
