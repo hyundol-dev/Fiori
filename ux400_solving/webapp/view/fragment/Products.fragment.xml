@@ -9,8 +9,10 @@
             draggable="true"
             resizable="true">
         <content>
-            <t:Table id="idFragment"
-                    rows="{/Products}">                     
+            <t:Table id="idFragment" 
+                    rows="{/Products}"
+                    selectionMode="MultiToggle"
+                    paste="onPaste">                     
                 <t:columns>
                    <t:Column>
                         <Label text="ProductID"/>
