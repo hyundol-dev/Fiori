@@ -41,72 +41,72 @@
         </Panel>
 
         <Panel headerText = "Form" expandable="true">
-		<f:Form id="FormChangeColumn_threeGroups234"
-			editable="true">
-			<f:title>
-				<c:Title text="Supplier" />
-			</f:title>
-			<f:layout>
-                <!--Columns M , L, XL의 사이즈 정의-->
-				<f:ColumnLayout
-					columnsM="2"
-					columnsL="3"
-					columnsXL="4"
-				/>
-			</f:layout>
-			<f:formContainers>
-				<f:FormContainer title="Address">   
-					<f:formElements>
-						<f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-                        <f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-                        <f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-                        <f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-					</f:formElements>
-				</f:FormContainer>
+            <f:Form id="FormChangeColumn_threeGroups234"
+                editable="true">
+                <f:title>
+                    <c:Title text="Supplier" />
+                </f:title>
+                <f:layout>
+                    <!--Columns M , L, XL의 사이즈 정의-->
+                    <f:ColumnLayout
+                        columnsM="2"
+                        columnsL="3"
+                        columnsXL="4"
+                    />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer title="Address">   
+                        <f:formElements>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
 
-                <!--새롭게 그룹핑-->
-                <f:FormContainer title="Group 2">   
-					<f:formElements>
-						<f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-                        <f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-                        <f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-                        <f:FormElement label="Name">
-							<f:fields>
-								<Input value="{SupplierName}"/>
-							</f:fields>
-						</f:FormElement>
-					</f:formElements>
-				</f:FormContainer>
-			</f:formContainers>
-		</f:Form>
+                    <!--새롭게 그룹핑-->
+                    <f:FormContainer title="Group 2">   
+                        <f:formElements>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Name">
+                                <f:fields>
+                                    <Input value="{SupplierName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
         </Panel>
 
         <!--SimpleForm-->

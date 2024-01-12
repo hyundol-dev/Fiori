@@ -26,7 +26,7 @@
                 > <!--title = 차트 제목, legendGroup = 범례-->
                 <!--vizType의 값에 따라 차트 달라짐-->
                 <viz:dataset>
-                    <viz.data:FlattenedDataset data="{view>/list}">
+                    <viz.data:FlattenedDataset data="{view>/list}"> <!-- 기준 경로 지정 -->
                         <!-- X축 -->
                         <viz.data:dimensions> 
                             <!--name = 표시되는 이름, value = 실제 들어갈 값-->

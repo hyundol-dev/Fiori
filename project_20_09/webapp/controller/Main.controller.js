@@ -19,6 +19,8 @@ sap.ui.define([
                     OrderDate_end: null
                 }
                 this.getView().setModel(new JSONModel(oData),'search');
+
+                
             },
             fnDateToString: function (sValue) {
                 if(sValue) {
@@ -178,19 +180,18 @@ sap.ui.define([
                 // 얻은 모델 경로를 통해, 해당 경로의 전체 데이터를 얻음
                 var oSelectData = this.getView().getModel().getProperty(sPath);
 
-                alert(oSelectData.OrderID);
+                // alert(oSelectData.OrderID);
                 // alert(oSelectData.ShipCity);
                 // 이런 식으로 화면에 없는 정보도 불러올 수 있음
                 // https://services.odata.org/northwind/northwind.svc/Orders?$format=json
                 // 여기 참고해서!
-                
-                // Dialog 호출
-                // local 이름의 JSONModel을 전역으로 사용할 수 있도록 생성되어 있음
-                // local 모델에 데이터를 담아놓으면
-                // Dialog 에서도 사용이 가능함!
-                // 주의) Fragment.load()를 통해서 팝업 호출 시
-                //       해당 팝업에 모델 데이터를 띄우기 위해서는
-                //       호출된 Dialog에 .setModel(모델객체) 해줘야 함!
+
+                // Router
+                // router
+                var oRouter = this.getOwnerComponent().getRouter();
+                oRouter.navTo('RouteDetail', {
+                    OrderID : (oSelectData.OrderID)
+                });
             }
         });
     });

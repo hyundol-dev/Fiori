@@ -1,0 +1,49 @@
+<mvc:View controllerName="odata.project2009.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:c="sap.ui.core">
+    <Page id="page" title="{i18n>title}" 
+        showNavButton="true" navButtonPress="onNavBack">
+            <f:Form id="idForm" editable="true">
+                <f:title>
+                    <c:Title text="Order Detail" />
+                </f:title>
+                <f:layout>
+                    <!--Columns M , L, XL의 사이즈 정의-->
+                    <f:ColumnLayout
+                        columnsM="2"
+                        columnsL="3"
+                        columnsXL="4"
+                    />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer title="Ship Information">   
+                        <f:formElements>
+                            <f:FormElement label="OrderID">
+                                <f:fields>
+                                    <Text text="{OrderID}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="ShipName">
+                                <f:fields>
+                                    <Text text="{ShipName}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="ShipAddress">
+                                <f:fields>
+                                    <Text text="{ShipAddress}"/>
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="ShipCountry">
+                                <f:fields>
+                                    <Text text="{ShipCountry}"/>
+                                </f:fields>
+                            </f:FormElement>
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        <Text id="idText" />
+    </Page>
+</mvc:View>

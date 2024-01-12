@@ -118,7 +118,8 @@
                                 <t:template>
                                     <!-- <Text text="{UnitsInStock}" /> -->
                                     <micro:RadialMicroChart 
-                                        size="S"
+                                        size="S" width="100%"
+                                        alignContent="Center"
                                         percentage="{= ${UnitsInStock}/100}"
                                         valueColor="{= ${UnitsInStock}/100 > 0.3 ? 'Good' : 'Error'}"/>
                                     <!--백분위 계산 위해 percentage, 값에 따른 다른 색상 = valueColor-->

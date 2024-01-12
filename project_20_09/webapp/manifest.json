@@ -102,7 +102,14 @@
           "target": [
             "TargetMain"
           ]
-        }
+        },
+        {
+          "name": "RouteDetail",
+          "pattern": "detail/{OrderID}", 
+          "target": [
+              "TargetDetail"
+          ]
+      }
       ],
       "targets": {
         "TargetMain": {
@@ -111,7 +118,13 @@
           "clearControlAggregation": false,
           "viewId": "Main",
           "viewName": "Main"
-        }
+        },
+        "TargetDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "viewId": "Detail",
+          "viewName": "Detail"
+      }
       }
     },
     "rootView": {
