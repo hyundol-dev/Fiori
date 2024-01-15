@@ -21,7 +21,10 @@ sap.ui.define([
                 // 해당 이벤트가 실행됨
                 var oArgu= oEvent.getParameters().arguments;
 
-                console.log("Detail : ", oArgu);
+                // { key 1 : 'okok', key2 : '123' }
+                console.log("Detail : ", oArgu); 
+                // oArgu.key1 / oArgu['key1'] 통해서도 원하는 키 값 얻을 수 있음
+                 
             },
             // Detail에서 Main으로 뒤로가기
             onNavBack: function() {
