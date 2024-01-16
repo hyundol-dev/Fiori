@@ -42,14 +42,15 @@
 										<ComboBox 
                                             id="idChartCombo"
                                             items="{
-                                            path: 'typeList>/type'
+                                            path: 'typeList>/list'
                                             }"
                                             required="true"
                                             selectedKey="bar"
                                             change="onComboBoxChange"                                        
                                             >
+                                            <!--문제 7-1 onComboBoxChangell-->
                                             
-                                         <core:Item key="{typeList>}" text="{typeList>}" />
+                                         <core:Item key="{typeList>key}" text="{typeList>key}" />
 											
 										</ComboBox>
 									</fb:control>

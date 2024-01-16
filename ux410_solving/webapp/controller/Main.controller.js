@@ -13,7 +13,14 @@ sap.ui.define([
         return Controller.extend("sap.btp.ux410solving.controller.Main", {
             onInit: function () {
                 // 문제 6
-                var oModel = { type: ["bar", "column", "line", "donut"] } 
+                var oModel = { 
+                    list : [
+                    { key : "bar" },
+                    { key : "column" },
+                    { key : "line" },
+                    { key : "donut" } 
+                    ]
+                } 
                 
                 this.getView().setModel(new JSONModel(oModel),'typeList');
 
