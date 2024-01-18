@@ -1,0 +1,90 @@
+<mvc:View controllerName="project2014.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:l="sap.ui.layout">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <l:Grid
+                class="sapUiSmallMarginTop"
+                hSpacing="2"
+                defaultSpan="XL6 L6 M6 S10">
+                <l:content>
+                    <Input value="{data>/Memid}" description="Member ID">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Memnm}" description="Member Name">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Telno}" description="Tel. Number">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Email}" description="Email">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                </l:content>
+                
+            </l:Grid>
+        <!--sap.ui.table.Table 추가해서 
+            Products 조회(전체 필드) at Sample->Grid Table로 검색하면 됩니다-->
+        <t:Table
+            rows="{/Member}"
+            selectionMode="Single"
+            rowSelectionChange="onRowSelectionChange"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title"
+            id="idTable">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="title" text="Member"/>
+                    <ToolbarSpacer /> <!--띄어쓰기 역할-->
+                    <Button text="Read Entity" type="Emphasized" press="onEntity" />
+                    <Button text="EntitySet" type="Emphasized" press="onEntitySet" />
+                    <Button text="Create" type="Emphasized" press="onCreate" />
+                    <Button text="Update" type="Emphasized" press="onUpdate" />
+                    <Button text="Delete" type="Emphasized" press="onDelete" />
+                    <Button icon="sap-icon://reset" press="onReset" />
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column>
+                    <Label text="Member ID" />
+                    <t:template>
+                        <Text text="{Memid}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="Member Name" />
+                    <t:template>
+                        <Text text="{Memnm}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="Tel. Number" />
+                    <t:template>
+                        <Text text="{Telno}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="Email" />
+                    <t:template>
+                        <Text text="{Email}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                
+            </t:columns>
+        </t:Table>
+        
+        
+        </content>
+    </Page>
+</mvc:View>

@@ -1,0 +1,101 @@
+<mvc:View controllerName="odata.project2013.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:t="sap.ui.table"
+    xmlns:l="sap.ui.layout">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <l:Grid
+                class="sapUiSmallMarginTop"
+                hSpacing="2"
+                defaultSpan="XL6 L6 M6 S10">
+                <l:content>
+                    <Input value="{data>/Productno}" description="Product No">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Productname}" description="Product Name">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Fname}" description="First Name">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Lname}" description="Last Name">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                    <Input value="{data>/Memo}" description="Memo">
+                        <layoutData>
+                            <l:GridData span="XL4 L4 M6 S12" />
+                        </layoutData>
+                    </Input>
+                </l:content>
+                
+            </l:Grid>
+        <!--sap.ui.table.Table 추가해서 
+            Products 조회(전체 필드) at Sample->Grid Table로 검색하면 됩니다-->
+        <t:Table
+            rows="{/Products}"
+            selectionMode="Single"
+            rowSelectionChange="onRowSelectionChange"
+            selectionBehavior="RowOnly"
+            paste="onPaste"
+            ariaLabelledBy="title"
+            id="idTable">
+            <t:extension>
+                <OverflowToolbar style="Clear">
+                    <Title id="title" text="Products"/>
+                    <ToolbarSpacer /> <!--띄어쓰기 역할-->
+                    <Button text="Read Entity" type="Emphasized" press="onEntity" />
+                    <Button text="EntitySet" type="Emphasized" press="onEntitySet" />
+                    <Button text="Create" type="Emphasized" press="onCreate" />
+                    <Button text="Update" type="Emphasized" press="onUpdate" />
+                    <Button text="Delete" type="Emphasized" press="onDelete" />
+                    <Button icon="sap-icon://reset" press="onReset" />
+                </OverflowToolbar>
+            </t:extension>
+            <t:columns>
+                <t:Column>
+                    <Label text="Product No" />
+                    <t:template>
+                        <Text text="{Productno}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="Product Name" />
+                    <t:template>
+                        <Text text="{Productname}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="First Name" />
+                    <t:template>
+                        <Text text="{Fname}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="Last Name" />
+                    <t:template>
+                        <Text text="{Lname}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                <t:Column>
+                    <Label text="Memo" />
+                    <t:template>
+                        <Text text="{Memo}" wrapping="false" />
+                    </t:template>
+                </t:Column>
+                
+            </t:columns>
+        </t:Table>
+        
+        
+        </content>
+    </Page>
+</mvc:View>
