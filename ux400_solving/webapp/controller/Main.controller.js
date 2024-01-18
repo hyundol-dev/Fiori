@@ -60,10 +60,19 @@ sap.ui.define([
             },
 
             // 문제 9: onValueChange 함수 구현
-            // onValueChange: function() {
-            //     var oInput = this.getValue().byId("idInput").
-            //     oInput.setValueState()
-            // }
+            onValueChange: function(oEvent) {
+                
+                var oInput = this.getView().byId("idInput");
+                var oInputValue = oInput.getValue();
+                console.log(oInputValue);
+                debugger;
+                if(!oInputValue) {
+                    oInput.setValueState(sap.ui.core.ValueState.Error);
+                }else{
+                    oInput.setValueState(sap.ui.core.ValueState.None);
+                }
+                
+            }
 
 
         });
