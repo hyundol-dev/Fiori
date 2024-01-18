@@ -61,11 +61,12 @@ sap.ui.define([
 
             // 문제 9: onValueChange 함수 구현
             onValueChange: function(oEvent) {
-                
+                // View에 있는 idInput Controller의 oInput으로 가져오기
                 var oInput = this.getView().byId("idInput");
+                // oInput의 value(값) oInputValue로 할당
                 var oInputValue = oInput.getValue();
-                console.log(oInputValue);
-                debugger;
+
+                // 값이 비어있으면 Error, 아니면 None
                 if(!oInputValue) {
                     oInput.setValueState(sap.ui.core.ValueState.Error);
                 }else{
