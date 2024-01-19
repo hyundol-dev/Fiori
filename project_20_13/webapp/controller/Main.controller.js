@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    'sap/ui/model/json/JSONModel'
+    'sap/ui/model/json/JSONModel',
+    'sap/ui/model/Filter'
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel) {
+    function (Controller, JSONModel, Filter) {
         "use strict";
 
         return Controller.extend("odata.project2013.controller.Main", {
@@ -61,17 +62,24 @@ sap.ui.define([
                 // Model refresh!
             },
 
-            // onEntitySet 함수 구현 (Read)
+            // onEntitySet 함수 구현 (Read, EntitySet)
             onEntitySet: function () {
                 // Model 불러오기
                 var oDataModel = this.getView().getModel();
+                var oFilter = new Filter("Productname", "EQ", "안녕");
+                // var aFilter = [];
+                // aFilter.push(oFilter) 
+                // 이거랑 filters: [oFilter]랑 같음
 
-                // 전체 조회
-                // GET 요청: "/Products"
+                var oDialog = this.byId("idDialog")
+
                 oDataModel.read("/Products", {
-                    filters: [ /* 필터 객체 배열 */ ],
+                    filters: [oFilter],
                     success: function(oReturn) {
                         console.log("전체조회: ", oReturn)
+
+                        oDialog.setModel(new JSONModel(oReturn), 'dialog');
+                        oDialog.open();
                     },
                     error: function(oError) {
                         console.log("전체조회 중 오류 발생 ", oError)
@@ -79,7 +87,7 @@ sap.ui.define([
                 }); //read(sPath,mParameters?{success?, error?})
             },
 
-            // onEntity 함수 구현 (단 건 조회)
+            // onEntity 함수 구현 (단 건 조회, Read Entity)
             onEntity: function() {
                 // 데이터 한 건 조회
                 // GET 요청 : "/Products(ProductNo='1000')"
@@ -160,7 +168,11 @@ sap.ui.define([
                         sap.m.MessageToast.show("삭제되었습니다.");
                     }
                 });
-            }
+            },
 
+            // Dialog fragment 닫기
+            onCloseDialog: function(oEvent) {
+                oEvent.getSource().getParent().close();
+            }
         });
     });

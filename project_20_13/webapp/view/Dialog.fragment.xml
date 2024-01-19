@@ -1,0 +1,58 @@
+<c:FragmentDefinition 
+    xmlns:t = "sap.ui.table" 
+    xmlns = "sap.m" 
+    xmlns:c="sap.ui.core">
+    <Dialog id = "idDialog"
+            title="Products (+Filter)"
+            draggable="true" 
+            resizable="true"
+            >
+        <content>
+            <t:Table
+                rows="{dialog>/results}"
+                selectionMode="Single"
+                rowSelectionChange="onRowSelectionChange"
+                selectionBehavior="RowOnly"
+                paste="onPaste"
+                ariaLabelledBy="title">
+                <t:columns>
+                    <t:Column>
+                        <Label text="Product No" />
+                        <t:template>
+                            <Text text="{dialog>Productno}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="Product Name" />
+                        <t:template>
+                            <Text text="{dialog>Productname}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="First Name" />
+                        <t:template>
+                            <Text text="{dialog>Fname}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="Last Name" />
+                        <t:template>
+                            <Text text="{dialog>Lname}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="Memo" />
+                        <t:template>
+                            <Text text="{dialog>Memo}" wrapping="false" />
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+            </t:Table>
+        </content>
+        <!--Dialog(팝업) 닫기 버튼-->
+        <endButton>
+            <Button text = "Close" press = "onCloseDialog"/>
+        </endButton>
+    </Dialog>
+
+</c:FragmentDefinition>

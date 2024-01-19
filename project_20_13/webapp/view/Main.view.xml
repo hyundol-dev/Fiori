@@ -2,9 +2,11 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:t="sap.ui.table"
+    xmlns:c="sap.ui.core"
     xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <content>
+        <c:Fragment fragmentName="odata.project2013.view.Dialog" />
             <l:Grid
                 class="sapUiSmallMarginTop"
                 hSpacing="2"
@@ -61,7 +63,7 @@
                 </OverflowToolbar>
             </t:extension>
             <t:columns>
-                <t:Column>
+                <t:Column filterProperty="Productno" sortProperty="Productno">
                     <Label text="Product No" />
                     <t:template>
                         <Text text="{Productno}" wrapping="false" />

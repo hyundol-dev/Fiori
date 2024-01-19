@@ -1,11 +1,13 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    'sap/ui/model/json/JSONModel'
+    'sap/ui/model/json/JSONModel',
+    'sap/ui/core/Fragment',
+    'sap/ui/model/Filter'
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller, JSONModel) {
+    function (Controller, JSONModel, Fragment, Filter) {
         "use strict";
 
         return Controller.extend("project2014.controller.Main", {
@@ -59,16 +61,63 @@ sap.ui.define([
                 // Model refresh!
             },
             // onEntitySet 함수 구현 (Read/GET)
-            onEntitySet: function () {
+            onEntitySet: function (oEvent) {
                 // Model 불러오기
+                // var oDataModel = this.getView().getModel();
+
+                // Popover
+                var oButton = oEvent.getSource(), // , 로 변수 2개 동시에 선언
+				    oView = this.getView(); 
+
+                // create popover
+                if (!this._pPopover) { // controller의 _pPopover 변수값이 없으면
+                    this._pPopover = Fragment.load({ 
+                        id: oView.getId(),  // <-- 요거 없으면 sap.ui.getCore().byId('')
+                        name: "project2014.view.fragment.Popover",
+                        controller: this
+                    }).then(function(oPopover) { // Fragment.load가 끝나면 실행
+                        oPopover.setModel(new JSONModel(), 'popover');
+                        oView.addDependent(oPopover); // oView에 oPopover 세팅하는 과정
+                        return oPopover; 
+                    });
+                }
+                this._pPopover.then(function(oPopover) {
+                    oPopover.openBy(oButton);  // 한번 View에 Popover가 붙었으니깐 이를 보여주는 코드
+                });
+
+                // oDataModel.read("/Member", {
+                //     success: function(oReturn) {
+                //         console.log("전체조회: ", oReturn)
+                //     },
+                //     error: function(oError) {
+                //         console.log("전체조회 중 오류 발생 ", oError)
+                //     }
+                // });
+            },
+
+            onRead: function() {
+                // var oPopover = sap.ui.getCore().byId('idPopover');
+
+                // Fragment.load() 사용 시,
+                // view id를 같이 넘겨줬기 때문에 view 안에 popover가 붙게 됨
+                // ∴ this.byId() 로 접근 가능
+                var oPopover = this.byId("idPopover");
+                var oPopoverModel = oPopover.getModel('popover').getData();
+                // var oPopoverModel = oPopover.getModel('popover');
+                // var oData = oPopoverModel.getData(); 로도 가능
                 var oDataModel = this.getView().getModel();
 
+                var oFilter = new Filter("Memnm", "Contains", oPopoverModel.Membername);
+                
                 oDataModel.read("/Member", {
-                    success: function(oReturn) {
-                        console.log("전체조회: ", oReturn)
+                    urlParameters: {
+                        "$expand" : "WorkSet",
+                        "$select" : "Memid,WorkSet"
                     },
-                    error: function(oError) {
-                        console.log("전체조회 중 오류 발생 ", oError)
+                    filters: [oFilter],
+                    success: function(oReturn) {
+                        debugger;
+                        console.log("전체조회: ", oReturn)
                     }
                 });
             },
@@ -97,7 +146,11 @@ sap.ui.define([
                     "Memid" : oJSONData.Memid || "",
                     "Memnm" : oJSONData.Memnm || "",
                     "Telno" : oJSONData.Telno || "",
-                    "Email" : oJSONData.Email || ""
+                    "Email" : oJSONData.Email || "",
+                    // WorkSet : [
+                    //     {}, {}, {}, ...
+                    // ]
+
                 };
 
                 oDataModel.create("/Member", oBody, {

@@ -1,0 +1,26 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core">
+	<Popover
+		id="idPopover"
+		title="Filter"
+		class="sapUiResponsivePadding--header sapUiResponsivePadding--footer"
+		placement="Bottom"
+		initialFocus="email">
+		<footer>
+			<OverflowToolbar>
+				<ToolbarSpacer/>
+				<Button text="Read" press="onRead" />
+			</OverflowToolbar>
+		</footer>
+		<VBox class="sapUiSmallMargin">
+            <Label text="Member ID: "/>
+            <Input value="{popover>/Memberid}"/>
+		</VBox>
+        <VBox class="sapUiSmallMargin">
+            <Label text="Member Name: "/>
+            <Input value="{popover>/Membername}"/>
+		</VBox>
+
+	</Popover>
+</c:FragmentDefinition>
