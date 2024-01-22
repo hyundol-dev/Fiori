@@ -4,8 +4,13 @@
     <Panel headerText="Hello Panel Title">
         <content>
             <Button text = "Show Hello" press = ".onShowHello"/>
-
-            <Input value = "" width = "50%"/>
+                <Table>
+                    <columns>
+                        <Column>
+                            <Input value="Subview Test"/>
+                        </Column>
+                    </columns>
+                </Table>
         </content>
     </Panel>
 </mvc:View>

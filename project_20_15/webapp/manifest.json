@@ -1,7 +1,7 @@
 {
   "_version": "1.59.0",
   "sap.app": {
-    "id": "sync.project2002",
+    "id": "project2015",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -13,18 +13,7 @@
     "sourceTemplate": {
       "id": "@sap/generator-fiori:basic",
       "version": "1.12.1",
-      "toolsId": "c57435ee-a73b-42eb-84c5-f139d13f6079"
-    },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/sap/ZTABLEDATA00_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      }
+      "toolsId": "f7b7d212-89e8-41f9-b7e3-c55dbc97c92c"
     }
   },
   "sap.ui": {
@@ -46,7 +35,7 @@
   "sap.ui5": {
     "flexEnabled": false,
     "dependencies": {
-      "minUI5Version": "1.120.3",
+      "minUI5Version": "1.120.4",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -66,13 +55,8 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "sync.project2002.i18n.i18n"
+          "bundleName": "project2015.i18n.i18n"
         }
-      },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {}
       }
     },
     "resources": {
@@ -87,7 +71,7 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "sync.project2002.view",
+        "viewPath": "project2015.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
@@ -112,7 +96,7 @@
       }
     },
     "rootView": {
-      "viewName": "sync.project2002.view.App",
+      "viewName": "project2015.view.App",
       "type": "XML",
       "async": true,
       "id": "App"
