@@ -12,12 +12,20 @@
                 <Button text="Random" press="onRandomPress"/>
             </VBox>
 
-            <OverflowToolbar>
-                <Title text="랜덤 목록 리스트"/>
-            </OverflowToolbar>
             <t:Table id="idTable"
                     rows="{list>/number}"
                     ariaLabelledBy="title">
+                <t:extension>
+                    <OverflowToolbar>
+                        <Title text="랜덤 목록 리스트" level="H2"/>
+                        <ToolbarSpacer/>
+                        <Button 
+                            text="Delete"
+                            press="onDelete"
+                            type="Emphasized"
+                            icon="sap-icon://delete"/>
+                    </OverflowToolbar>
+                </t:extension>
                 <t:columns>
                     <t:Column hAlign="Begin">
                         <Label width="100%" text="value"/>

@@ -13,7 +13,7 @@
                     <Title text = "Vertical Layout (Toolbar)" />
                     <ToolbarSpacer />
                     <!--버튼에 아이콘 넣기-->
-                    <Button icon = "sap-icon://save"/>
+                    <Button text="Save" icon = "sap-icon://save"/>
                 </Toolbar>
             
             </headerToolbar>
@@ -30,7 +30,7 @@
         </Panel>
 
         <Panel headerText = "Horizontal Layout" expandable="true">
-            <l:HorizontalLayout >
+            <l:HorizontalLayout > <!--가로 정렬 -->
                 <Input value = "입력창 입니다." />
                 <Text text = "Text 입니다." />
                 <DatePicker />
@@ -40,7 +40,7 @@
             </l:HorizontalLayout>
         </Panel>
 
-        <Panel headerText = "Form" expandable="true">
+        <Panel headerText = "Form" expandable="true"> <!-- Form -->
             <f:Form id="FormChangeColumn_threeGroups234"
                 editable="true">
                 <f:title>

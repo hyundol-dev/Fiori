@@ -34,6 +34,18 @@ sap.ui.define([
                 oModel.setProperty('/number', aNumbers);
             },
 
+            // 숫자 삭제 해보기 (pj08 실습)
+            onDelete: function() {
+                var oModel = this.getView().getModel("list");
+                var aList = oModel.getProperty("/number");
+                var aSelectedRow = this.byId("idTable").getSelectedIndices();
+                for (var i = aSelectedRow.length-1; i>=0; i--) {
+                    aList.splice(aSelectedRow[i], 1);
+                }
+                oModel.setProperty("/number", aList);
+                
+            },
+
             // onProductDialog Fragment 버튼
             onProductDialog: function() {
                 this.getView().byId("idProductsDialog").open();
