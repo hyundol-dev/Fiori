@@ -1,9 +1,26 @@
 <mvc:View controllerName="sync.project2002.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout">
     <Page id="page" title="{i18n>title}">
         <content>
             <Text text="project_20_02 Deploy test"/>
+            <VBox>
+                <layoutData>
+                    <l:GridData span = "XL3 L3 M6 S12" /> 
+                </layoutData>
+                    <Input value = "1st VBox" />
+                    <Input value = "1st VBox" />
+                    <Input value = "1st VBox" />
+            </VBox>
+            <VBox>
+                <layoutData>
+                    <l:GridData span = "XL3 L9 M6 S12" /> 
+                </layoutData>
+                    <Input value = "2nd VBox" />
+                    <Input value = "2nd VBox" />
+                    <Input value = "2nd VBox" />
+            </VBox>
         </content>
     </Page>
 </mvc:View>

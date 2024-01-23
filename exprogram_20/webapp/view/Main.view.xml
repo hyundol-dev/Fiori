@@ -1,0 +1,171 @@
+<mvc:View controllerName="exam.exprogram20.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:c="sap.ui.core"
+    xmlns:t="sap.ui.table"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <!-- <l:HorizontalLayout> -->
+            <l:Grid
+                class="sapUiSmallMarginTop"
+                hSpacing="2"
+                defaultSpan="XL5 L10 M10 S12">
+                <!-- 좌측 검색 Form 작성-->
+                <VBox class="">
+                    <f:SimpleForm>
+                        <f:content>
+                            <OverflowToolbar>
+                                <ToolbarSpacer />
+                                <Button text="Search" icon="sap-icon://search"
+                                    type="Emphasized" press="onSearch" />
+                            </OverflowToolbar>
+                            <Label text="ID" />
+                            <Input id="idCatID" />
+                            <Label text="Category Name" />
+                            <Input id="idCatName" />
+                        </f:content>
+                    </f:SimpleForm>
+                    <layoutData>
+                        <l:GridData span="XL2 L2 M2 S12"/>
+                    </layoutData>
+                </VBox>
+                <VBox>
+                    <Panel expandable="true" expanded = "true">
+                        <headerToolbar>
+                            <Toolbar>
+                                <Title text = "카테고리 조회" />
+                            </Toolbar>
+                        </headerToolbar>
+                        <!-- Table 생성 -->
+                        <Table id="idTable"
+                            items="{
+                                path: '/Categories'
+                            }"
+                            mode="SingleSelectMaster"
+                            selectionChange="onRowSelectionChange"
+                            paste="onPaste"
+                            growing="true"
+                            growingThreshold="3" >
+                            <columns>
+                                <Column>
+                                    <Text text="카테고리 ID" />
+                                </Column>
+                                <Column>
+                                    <Text text="카테고리명" />
+                                </Column>
+                                <Column>
+                                    <Text text="설명" />
+                                </Column>
+                            </columns>
+                            <items>
+                                <ColumnListItem>
+                                    <cells>
+                                        <Text text="{CategoryID}" />
+                                        <Text text="{CategoryName}" />
+                                        <Text text="{Description}" />
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </Panel>            
+                <layoutData>
+                    <l:GridData span="XL10 L10 M10 S12"/>
+                </layoutData>
+                </VBox>
+                
+                <!-- 문제 3: 카테고리 선택 시 상품 정보 조회 -->
+                <VBox>
+                    <t:Table 
+                        id="idProductTable"
+                        rows="{/Products}"
+                        ariaLabelledBy="title">
+                        <t:extension>
+                            <OverflowToolbar style="Clear">
+                                <Title text="상품 조회"/>
+                            </OverflowToolbar>
+                        </t:extension>
+                        <t:columns>
+                            <t:Column>
+                                <Label text="ID" />
+                                <t:template>
+                                    <Text text="{CategoryID}" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column>
+                                <Label text="상품명" />
+                                <t:template>
+                                    <Text text="{ProductName}" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column>
+                                <Label text="재고" />
+                                <t:template>
+                                    <Text text="{UnitsInStock}" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column>
+                                <Label text="단위 주문 수량" />
+                                <t:template>
+                                    <Text text="{UnitsOnOrder}" wrapping="false" />
+                                </t:template>
+                            </t:Column>
+                            <t:Column>
+                                <!-- 주문 가능 여부 Expression Binding-->
+                                <Label text="주문 가능여부" />
+                                <t:template>
+                                    <c:Icon
+                                        src="{= ${UnitsInStock} > ${UnitsOnOrder} ? 'sap-icon://circle-task' : 'sap-icon://decline'}"
+                                        class="size1"
+                                        color="{= ${UnitsInStock} > ${UnitsOnOrder} ? 'rgb(27, 234, 33)' : 'rgb(234, 52, 27)'}"/>
+                                </t:template>
+                            </t:Column>
+                        </t:columns>
+                    </t:Table>
+                </VBox>
+            
+            <!-- 4번: 카테고리 선택 시 상품 매출 비교 조회 (VizFrame) -->
+            <viz:VizFrame id="idPieChart" 
+                selectData="onChartClick"
+                vizType="pie"
+                uiConfig="{ 'applicationSet' : 'fiori' }"
+                vizProperties="{
+                    'title' : { 'visible' : true, 'text' : '상품별 매출량 비교' },
+                    'legendGroup' : {
+                        'layout' : { 'position' : 'right' }
+                        },
+                    'plotArea' : {
+                        'drawingEffect' : 'glossy',
+                        'dataLabel' : { 'visible' : true, 'type' : 'value' }
+                    }
+                }"
+                > 
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{/Sales_by_Categories}" id="idDataset"> <!-- 기준 경로 지정 -->
+                        <!-- dimensions -->
+                        <viz.data:dimensions> 
+                            <viz.data:DimensionDefinition name="ProductName" value="{ProductName}"/>
+                        </viz.data:dimensions>
+                        <!-- measures -->
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="ProductSales" value="{ProductSales}"/>
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds> 
+                    <viz.feeds:FeedItem uid="color" type="Dimension" values="ProductName"/>
+                    <viz.feeds:FeedItem uid="size" type="Measure" values="ProductSales"/>
+                    
+                </viz:feeds>
+            </viz:VizFrame>
+            </l:Grid>
+            <!-- </l:HorizontalLayout> -->
+        </content>
+        
+    </Page>
+</mvc:View>

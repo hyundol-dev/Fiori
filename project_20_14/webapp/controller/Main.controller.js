@@ -116,7 +116,7 @@ sap.ui.define([
                     },
                     filters: [oFilter],
                     success: function(oReturn) {
-                        debugger;
+                        // debugger;
                         console.log("전체조회: ", oReturn)
                     }
                 });
