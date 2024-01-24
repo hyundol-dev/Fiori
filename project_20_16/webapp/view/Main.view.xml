@@ -1,0 +1,41 @@
+<mvc:View controllerName="project2016.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>  
+            <!-- <Text text="이미지 링크로 띄우기"/>
+            <Image src="https://t.ly/4m6xk" width="100pt" /> -->
+            <!-- <ToolbarSpacer />
+            <Text text="이미지 배포(Deploy)해서 띄우기"/>
+            <Image src="../image/Frog.png" width="100pt" />
+            <Image src="../image/Coding.jpg" width="100pt" />
+            <ToolbarSpacer /> -->
+            <!-- <Text text="컨트롤러에서 이미지 불러오기"/>-->
+            <Image id="idImage" width="30%"/>  
+            <Table items="{/Member}">
+            <columns>
+                <Column>
+                    <Text text="Member Photo" />
+                </Column>
+                <Column>
+                    <Text text="Member ID" />
+                </Column>
+               
+            </columns>
+            <items>
+                <ColumnListItem 
+                    vAlign="Middle" >
+                    <cells>
+                        <Image src="{
+                            path : 'Memid',
+                            formatter: '.setImageUrl'
+                        }" width="100px"/>
+                        <Text text="{Memid}" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+            
+            </Table>
+        </content>
+    </Page>
+</mvc:View>
