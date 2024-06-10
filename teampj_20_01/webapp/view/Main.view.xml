@@ -1,0 +1,84 @@
+<mvc:View controllerName="salesanalysiscustpm.teampj2001.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:t="sap.ui.table"
+    xmlns:c="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds">
+    <Page id="page" title="[SAP ssarum] 연령대별 제품 판매량" titleLevel="H5">
+        <content>
+            <l:Grid>
+            <VBox>
+                <layoutData>
+                    <l:GridData span="XL12 L12 M12 S12"/>
+                </layoutData>
+                <f:SimpleForm id="SimpleFormDisplay354"
+                        editable="false"
+                        layout="ColumnLayout">
+                    <f:content>
+                        <Label text="자재번호" />
+                        <ComboBox id="IDMatno"
+                            width="300px"
+                            items="{
+                                path: '/ZBBT_MM020Set',
+                                sorter: { path: 'Matno' },
+                                filters: [
+                                    {
+                                        path: 'Matno',
+                                        operator: 'StartsWith',
+                                        value1: 'FG'
+                                    }
+                                ]
+                            }">
+                            <c:Item key="{Matno}" text="{= ${Matno} + ' - ' + ${Matnm} }" />
+                            <!-- <c:Item key="{Matno}" text="{Matno}" /> -->
+                        </ComboBox>
+                        <Button text="조회" icon="sap-icon://search" press="onSearch" type="Emphasized" width="90px"/>
+                        <Button text="초기화" icon="sap-icon://refresh" press="onRefresh" type="Default" width="90px"/>
+                    </f:content>
+                </f:SimpleForm>
+            </VBox>
+        </l:Grid>
+            <l:Grid>
+                <VBox>
+                    <layoutData>
+                        <l:GridData span="XL12 L12 M12 S12"/>
+                    </layoutData>
+                    <viz:VizFrame id="idageChart" width="100%"
+                    vizType="pie"
+                    uiConfig="{'applicationSet' : 'fiori'}"
+                    selectData="onSelectData"
+                    vizProperties="{
+                            'title' : { 'visible' : true, 'text' : '연령대별 제품 판매량' },
+                            'legendGroup':{layout:{position: 'right'}},
+                            'plotArea' : {
+                                drawingEffect: 'glossy',
+                                dataLabel: { visible: true, type:'percentage'},
+                                colorPalette:['#FFB6C1', '#ADD8E6', '#98FB98', '#E6E6FA', '#FFDAB9', '#E0FFFF', '#FFFFE0']
+                            }
+                    }">
+                        <viz:dataset>
+                            <viz.data:FlattenedDataset id="idageDataSet" data="{/ZBBC_SD_MYSALE2Set}">
+                                <viz.data:dimensions>
+                                    <viz.data:DimensionDefinition name="연령대" value="{Custage}" />
+                                </viz.data:dimensions>
+                                <viz.data:measures>
+                                    <viz.data:MeasureDefinition name="판매량" value="{Quantity}"/>
+                                </viz.data:measures>
+                            </viz.data:FlattenedDataset>
+                        </viz:dataset>
+
+                        <viz:feeds>
+                            <viz.feeds:FeedItem uid="size" type="Measure" values="판매량" />
+                            <viz.feeds:FeedItem uid="color" type="Dimension" values="연령대" />
+                        </viz:feeds>
+                    </viz:VizFrame>
+                </VBox>
+                
+            </l:Grid>
+        </content>
+    </Page>
+</mvc:View>
